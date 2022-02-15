@@ -6,20 +6,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class pospesek extends AppCompatActivity {
+public class gps extends AppCompatActivity {
 
-    TextView tv;
+    TextView gp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pospesek);
+        setContentView(R.layout.activity_gps);
 
-        tv = findViewById(R.id.tv);
+        gp = findViewById(R.id.gp);
 
         Intent intent = getIntent();
-        tv.setText(intent.getStringExtra("a"));
-
+        gp.setText(intent.getStringExtra("b"));
 
     }
 }

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Senzorji_2022_4a">
         <activity
+            android:name=".maps"
+            android:exported="false" />
+        <activity
+            android:name=".gps"
+            android:exported="false" />
+        <activity
             android:name=".pospesek"
             android:exported="false" />
         <activity

@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SensorsAndroidStudio/app/src/main/res/drawable/border.xml" value="0.590625" />
+        <entry key="..\:/SensorsAndroidStudio/app/src/main/res/layout/activity_gps.xml" value="0.5744791666666667" />
+        <entry key="..\:/SensorsAndroidStudio/app/src/main/res/layout/activity_main.xml" value="0.5744791666666667" />
+        <entry key="..\:/SensorsAndroidStudio/app/src/main/res/layout/activity_maps.xml" value="0.5744791666666667" />
+        <entry key="..\:/SensorsAndroidStudio/app/src/main/res/layout/activity_pospesek.xml" value="0.5744791666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.34427083333333336" />
         <entry key="app/src/main/res/layout/activity_pospesek.xml" value="0.35833333333333334" />
       </map>

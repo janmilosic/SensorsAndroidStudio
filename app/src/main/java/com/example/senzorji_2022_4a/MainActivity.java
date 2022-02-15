@@ -41,7 +41,27 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),pospesek.class);
                 String s = "Sporočilo iz senzorjev";
-                intent.putExtra("abc",s);
+                intent.putExtra("a",s);
+                startActivity(intent);
+            }
+        });
+
+        gps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),gps.class);
+                String s = "Sporočilo iz gps";
+                intent.putExtra("b",s);
+                startActivity(intent);
+            }
+        });
+
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),maps.class);
+                String s = "Sporočilo iz maps";
+                intent.putExtra("c",s);
                 startActivity(intent);
             }
         });

@@ -6,20 +6,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class pospesek extends AppCompatActivity {
+public class maps extends AppCompatActivity {
 
-    TextView tv;
+    TextView maps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pospesek);
+        setContentView(R.layout.activity_maps);
 
-        tv = findViewById(R.id.tv);
+        maps = findViewById(R.id.maps);
 
         Intent intent = getIntent();
-        tv.setText(intent.getStringExtra("a"));
-
+        maps.setText(intent.getStringExtra("c"));
 
     }
 }
