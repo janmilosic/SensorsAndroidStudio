@@ -10,6 +10,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class pospesek extends AppCompatActivity  implements SensorEventListener {
@@ -21,8 +22,11 @@ public class pospesek extends AppCompatActivity  implements SensorEventListener 
     private float[] nGravity = new float[3];
     private float[] mGravity;
     private double mSkupni;
+    private double maxP = 0;
+    private float sBarTest = 0;
 
-    TextView txtX, txtY, txtZ, txtSkupni;
+    TextView txtX, txtY, txtZ, txtSkupni, txtMP;
+    SeekBar sBar;
 
 
     @Override
@@ -36,6 +40,15 @@ public class pospesek extends AppCompatActivity  implements SensorEventListener 
         Intent intent = getIntent();
         tv.setText(intent.getStringExtra("a"));
          */
+
+        txtX = findViewById(R.id.txtX);
+        txtY = findViewById(R.id.txtY);
+        txtZ = findViewById(R.id.txtZ);
+        txtSkupni = findViewById(R.id.txtSkupni);
+        txtMP = findViewById(R.id.txtMP);
+
+        sBar = findViewById(R.id.sBar);
+
         
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         msensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -62,6 +75,18 @@ public class pospesek extends AppCompatActivity  implements SensorEventListener 
             float z = mGravity[2] - nGravity[2];
 
             mSkupni = sqrt(x * x + y * y + z * z);
+
+            if (mSkupni > maxP){
+                maxP = mSkupni;
+            }
+
+            txtX.setText("X: " + String.format("%4fm", x));
+            txtY.setText("Y: " + String.format("%4fm",y));
+            txtZ.setText("Z: " + String.format("%4fm",z));
+            txtSkupni.setText("SKUPAJ: " + String.format("%4fm",mSkupni));
+            txtMP.setText("Max: " + String.format("%4fm",maxP));
+
+            //sBar.setProgress("%4fm",maxP);
 
         }
 
