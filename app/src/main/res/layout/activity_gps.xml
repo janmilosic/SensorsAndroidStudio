@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gps">
+    tools:context=".gps"
+    android:background="#313131">
 
     <TextView
         android:id="@+id/gp"
@@ -14,6 +15,8 @@
         android:layout_marginTop="237dp"
         android:layout_marginEnd="192dp"
         android:layout_marginBottom="475dp"
+        android:text="0"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

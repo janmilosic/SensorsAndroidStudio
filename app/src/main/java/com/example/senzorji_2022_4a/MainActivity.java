@@ -1,8 +1,12 @@
 package com.example.senzorji_2022_4a;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -40,31 +44,42 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),pospesek.class);
-                String s = "Sporočilo iz senzorjev";
+                String s = "SPEED";
                 intent.putExtra("a",s);
                 startActivity(intent);
             }
         });
 
-        gps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),gps.class);
-                String s = "Sporočilo iz gps";
-                intent.putExtra("b",s);
-                startActivity(intent);
-            }
-        });
+        if (!dovoljenja()) {
+            gps.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), gps.class);
+                    String s = "GPS";
+                    intent.putExtra("b", s);
+                    startActivity(intent);
+                }
+            });
+        }
 
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),maps.class);
-                String s = "Sporočilo iz maps";
+                String s = "MAPS";
                 intent.putExtra("c",s);
                 startActivity(intent);
             }
         });
 
     }
+
+    public boolean dovoljenja(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},123);
+            return true;
+        }
+        return false;
+    }
+
 }
