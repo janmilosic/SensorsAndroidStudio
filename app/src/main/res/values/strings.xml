@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">senzorji_2022_4a</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
