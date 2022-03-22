@@ -2,6 +2,10 @@ package com.example.senzorji_2022_4a;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,10 +20,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private ActivityMaps2Binding binding;
+    private BroadcastReceiver broadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = new Intent(getApplicationContext(), GpsTracker.class);
+        startService(intent);
 
         binding = ActivityMaps2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -30,7 +38,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-    /**
+    /*
      * Manipulates the map once available.
         * This callback is triggered when the map is ready to be used.
         * This is where we can add markers or lines, add listeners or move the camera. In this case,
@@ -48,4 +56,28 @@ public void onMapReady(GoogleMap googleMap) {
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        broadcastReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                String lokacija = (String) intent.getExtras().get("location");
+                String[] ab = lokacija.split(" ");
+                double lat= Double.parseDouble(ab[0]);
+                double lon = Double.parseDouble(ab[1]);
+                LatLng lok = new LatLng( lat, lon);
+                mMap.addMarker(new MarkerOptions().position(lok).title("Marker"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(lok));
+
+            }
+        };
+
+        registerReceiver(broadcastReceiver, new IntentFilter("Update_location"));
+
+    }
+
         }
